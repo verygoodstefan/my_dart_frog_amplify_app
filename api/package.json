@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "npx ampx sandbox --outputs-format dart --outputs-out-dir .",
+    "modelgen": "npx ampx generate graphql-client-code --format modelgen --model-target dart --out models"
   },
   "keywords": [],
   "author": "",

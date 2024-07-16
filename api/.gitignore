@@ -14,3 +14,9 @@ build/
 
 # Test related files
 coverage/
+
+# amplify
+node_modules
+.amplify
+amplify_outputs*
+amplifyconfiguration*

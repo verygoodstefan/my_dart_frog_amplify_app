@@ -1,0 +1,32 @@
+name: Amplify Data Source
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    branches:
+      - master
+      - main
+    paths:
+      - ".github/workflows/amplify_data_source_verify_and_test.yaml"
+      - "api/packages/amplify_data_source/**"
+
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - ".github/workflows/**"
+      - "api/packages/amplify_data_source/**"
+
+
+jobs:
+  verify_and_test:
+    name: Verify and Test
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart_package.yml@main
+    with:
+      working_directory: api/packages/amplify_data_source
+      dart_sdk: stable
+      min_coverage: 100

@@ -17,7 +17,7 @@ class AmplifyDataSource {
   final AmplifyAPIDart _api;
 
   /// Create a new $Todo.
-  Future<GraphQLResponse<Todo>> createTodo() async {
+  Future<Todo> createTodo() async {
     final newTodo = Todo(
       id: const Uuid().v4(),
       content: 'Random Todo ${DateTime.now().toIso8601String()}',
@@ -27,7 +27,7 @@ class AmplifyDataSource {
     if (response.hasErrors) {
       throw Exception('Failed to create todo. Errors: ${response.errors}');
     }
-    return response;
+    return response.data!;
   }
 
   /// Get all $Todo items.

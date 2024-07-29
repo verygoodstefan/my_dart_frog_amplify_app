@@ -1,0 +1,30 @@
+{
+  "name": "amplify_data_source",
+  "version": "1.0.0",
+  "description": "[![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link] [![Powered by Mason](https://img.shields.io/endpoint?url=https%3A%2F%2Ftinyurl.com%2Fmason-badge)](https://github.com/felangel/mason) [![License: MIT][license_badge]][license_link]",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "sandbox": "npx ampx sandbox --outputs-format dart --outputs-out-dir lib",
+    "modelgen": "npx ampx generate graphql-client-code --format modelgen --model-target dart --out lib/models"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@aws-amplify/backend": "^1.0.4",
+    "@aws-amplify/backend-cli": "^1.2.1",
+    "aws-cdk": "^2.150.0",
+    "aws-cdk-lib": "^2.150.0",
+    "constructs": "^10.3.0",
+    "esbuild": "^0.23.0",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "aws-amplify": "^6.4.3"
+  }
+}

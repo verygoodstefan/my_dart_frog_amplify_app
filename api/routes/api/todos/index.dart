@@ -14,7 +14,9 @@ Future<Response> onRequest(RequestContext context) async {
 
 Future<Response> _get(RequestContext context) async {
   try {
-    final todos = await context.read<AmplifyDataSource>().getTodos();
+    final dataSourceFuture = context.read<Future<AmplifyDataSource>>();
+    final dataSource = await dataSourceFuture;
+    final todos = await dataSource.getTodos();
     return Response(
       body: jsonEncode(todos.toJson()),
     );

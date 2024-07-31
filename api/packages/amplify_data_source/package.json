@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "sandbox": "npx ampx sandbox --outputs-format dart --outputs-out-dir lib",
+    "sandbox": "npx ampx sandbox --outputs-format dart --outputs-out-dir ../../",
     "modelgen": "npx ampx generate graphql-client-code --format modelgen --model-target dart --out lib/models"
   },
   "keywords": [],

@@ -32,7 +32,17 @@ class AmplifyDataSource {
 
   /// Get all $Todo items.
   Future<PaginatedResult<Todo>> getTodos() async {
+    // ModelQueries is attached to a factory that isn't
+    // getting configured...do we need to bypass this?
+    // could create a GraphQL req manually?
+    // or is there a way to ensure that the api is the
+    // one attached to the AmplifyClassImpl?
+    // something like
+    // AmplifyClass().addPlugin(api);
+    // at instantiation of this whole package?
+    // then make _api actually AmplifyClass().API
     final request = ModelQueries.list(Todo.classType);
+
     final response = await _api.query(request: request).response;
     if (response.hasErrors) {
       throw Exception('Failed to get todos. Errors: ${response.errors}');

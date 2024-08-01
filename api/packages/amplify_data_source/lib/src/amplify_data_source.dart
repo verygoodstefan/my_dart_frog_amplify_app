@@ -1,4 +1,5 @@
 import 'package:amplify_api_dart/amplify_api_dart.dart';
+import 'package:amplify_core/amplify_core.dart';
 import 'package:amplify_data_source/models/ModelProvider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -8,13 +9,10 @@ import 'package:uuid/uuid.dart';
 class AmplifyDataSource {
   /// {@macro amplify_data_source}
   AmplifyDataSource({
-    AmplifyAPIDart? api,
-  }) : _api = api ??
-            AmplifyAPIDart(
-              options: APIPluginOptions(modelProvider: ModelProvider.instance),
-            );
+    required APICategory api,
+  }) : _api = api;
 
-  final AmplifyAPIDart _api;
+  final APICategory _api;
 
   /// Create a new $Todo.
   Future<Todo> createTodo() async {

@@ -16,14 +16,12 @@ class AmplifyUserRepository {
   /// Sign out the current user.
   Future<void> signOut() => _auth.signOut();
 
-  /// Sign in with a username and password.
+  /// Sign in with a username.
   Future<SignInResult> signIn({
     required String username,
-    required String password,
   }) {
     return _auth.signIn(
       username: username,
-      password: password,
       options: const SignInOptions(
         pluginOptions: CognitoSignInPluginOptions(
           authFlowType: AuthenticationFlowType.customAuthWithSrp,
@@ -40,5 +38,34 @@ class AmplifyUserRepository {
       _auth.signUp(
         username: username,
         password: password,
+      );
+
+  /// Sign up with a username and email.
+  /// Email is used to confirm sign in.
+  /// A confirmation code will be sent to the email.
+  Future<SignUpResult> customSignUp({
+    required String username,
+    required String password,
+    required String email,
+  }) async {
+    return _auth.signUp(
+      username: username,
+      password: password,
+      options: SignUpOptions(
+        userAttributes: {
+          AuthUserAttributeKey.email: email,
+        },
+      ),
+    );
+  }
+
+  /// Confirm a sign up with a confirmation code.
+  Future<SignUpResult> confirmSignUp({
+    required String username,
+    required String confirmationCode,
+  }) async =>
+      _auth.confirmSignUp(
+        username: username,
+        confirmationCode: confirmationCode,
       );
 }

@@ -14,3 +14,5 @@ dependencies:
   amplify_auth_cognito_dart: ^0.11.3
   amplify_core: ^2.3.0
   amplify_secure_storage_dart: ^0.5.1
+  password_dart: ^2.0.1
+  uuid: ^4.4.2

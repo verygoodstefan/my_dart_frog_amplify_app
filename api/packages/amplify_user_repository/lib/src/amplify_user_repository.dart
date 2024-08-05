@@ -21,11 +21,17 @@ class AmplifyUserRepository {
   Future<SignInResult> signIn({
     required String username,
   }) {
+    // this would be an incomplete sign-in, since there would need
+    // to be a confirmSignIn method where the user enters
+    // the randomly generated number that is created in the lambda
+    //
+    // how would we send the randomly generated number to the user?
+    // email? just show it on the screen?
     return _auth.signIn(
       username: username,
       options: const SignInOptions(
         pluginOptions: CognitoSignInPluginOptions(
-          authFlowType: AuthenticationFlowType.customAuthWithSrp,
+          authFlowType: AuthenticationFlowType.customAuthWithoutSrp,
         ),
       ),
     );
@@ -38,9 +44,10 @@ class AmplifyUserRepository {
     required String username,
     required String email,
   }) async {
+    final password = 'Password###${UUID.getUUID()}';
     return _auth.signUp(
       username: username,
-      password: Password.hash(UUID.getUUID(), PBKDF2()),
+      password: password, //Password.hash(password, PBKDF2()),
       options: SignUpOptions(
         userAttributes: {
           AuthUserAttributeKey.email: email,
